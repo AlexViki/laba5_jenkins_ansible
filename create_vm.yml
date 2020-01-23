@@ -3,24 +3,26 @@
   connection: local
   hosts: all
   
-  vars_prompt:
-    - name: "project_prefix"
-      prompt: "Type the name of resources"
-      private: no
-      default: "test-4"
-    - name: "admin_username"
-      prompt: "Type the admin username"
-      private: no
-      default: "user"
+#  vars_prompt:
+#    - name: "project_prefix"
+#      prompt: "Type the name of resources"
+#      private: no
+#      default: "test-4"
+#    - name: "admin_username"
+#      prompt: "Type the admin username"
+#      private: no
+#      default: "user"
 
   vars:
+    - admin_username: alex
+    - project_prefix: laba-5
     - location: "westeurope"
     - vm_size: "Standard_B1s"
     - disk_type: "Standard_LRS"
 #    - local_ip: "172.16.0.10"
     - virtualnetwork_cidr: "172.16.0.0/16"
     - subnet_cidr: "172.16.1.0/24"
-    - admin_pub_path: "~/.ssh/jenkins_to_ansible_azure.pub"
+    - admin_pub_path: "~/.ssh/laba5_jenkins_to_ansible_to_azure.pub"
     - resourcegroup_name: "{{project_prefix}}-rg"
     - availabilityset_name: "{{project_prefix}}-avset"
     - virtualnetwork_name: "{{project_prefix}}-vnet"
@@ -31,19 +33,19 @@
     - nic_root_name: "{{project_prefix}}-nic"
     
   tasks:
-    - name: "----->Create {{project_prefix}}-rg Resource Group"
+    - name: "----->Create Resource Group"
       azure_rm_resourcegroup:
         name: "{{resourcegroup_name}}"
         location: "{{location}}"
 
-    - name: "----->Create {{virtualnetwork_name}} Virtual Network"
+    - name: "----->Create Virtual Network"
       azure_rm_virtualnetwork:
         name: "{{virtualnetwork_name}}"
         resource_group: "{{resourcegroup_name}}"
         address_prefixes_cidr:
           - "{{virtualnetwork_cidr}}"
 
-    - name: "----->Create {{subnet_name}} Subnet in {{virtualnetwork_name}} for VMs"
+    - name: "----->Create Subnet in {{virtualnetwork_name}} for VMs"
       azure_rm_subnet:
         name: "{{subnet_name}}"
         virtual_network_name: "{{virtualnetwork_name}}"
@@ -51,7 +53,7 @@
         address_prefix_cidr: "{{subnet_cidr}}"
       register: subnet
 
-    - name: "----->Create {{securitygroup_name}} security rules (if local IP address was given)"
+    - name: "----->Create security rules (if local IP address was given)"
       azure_rm_securitygroup:
         name: "{{securitygroup_name}}"
         resource_group: "{{resourcegroup_name}}"
@@ -73,7 +75,7 @@
             direction: Inbound
 #      when: local_ip | ipaddr
 
-    - name: "----->Create a {{nic_root_name}}X network interface for each VM"
+    - name: "----->Create a network interface for each VM"
       azure_rm_networkinterface:
         name: "{{nic_root_name}}"
         resource_group: "{{resourcegroup_name}}"
@@ -86,7 +88,7 @@
             primary: True
 #      with_sequence: count="{{instances_number}}"
 
-    - name: "----->Create {{vm_root_name}}X VM with existing NIC"
+    - name: "----->Create VM with existing NIC"
       azure_rm_virtualmachine:
         resource_group: "{{resourcegroup_name}}"
         name: "{{vm_root_name}}"

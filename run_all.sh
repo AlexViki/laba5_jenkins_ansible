@@ -9,7 +9,7 @@ echo "###########################################################"
 echo "generate NEW SSH key"
 echo "###########################################################"
 
-ssh-keygen -t rsa -N "" -f ~/.ssh/jenkins_to_ansible_azure
+ssh-keygen -t rsa -N "" -f ~/.ssh/laba5_jenkins_to_ansible_to_azure
 
 echo "###########################################################"
 echo "Install Azure CLI"
