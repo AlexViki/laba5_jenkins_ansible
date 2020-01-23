@@ -9,7 +9,7 @@ echo "###########################################################"
 echo "generate NEW SSH key"
 echo "###########################################################"
 
-ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+ssh-keygen -t rsa -N "" -f ~/.ssh/jenkins_to_ansible_azure
 
 echo "###########################################################"
 echo "Install Azure CLI"
@@ -42,13 +42,13 @@ echo "###########################################################"
 echo "Clone playbook file from GIT"
 echo "###########################################################"
 
-git clone https://github.com/AlexViki/ansible_devops_create_vm_azure.git
+git clone https://github.com/AlexViki/laba5_jenkins_ansible.git /tmp/laba5
 
 echo "###########################################################"
 echo "RUN playbook "
 echo "###########################################################"
 
-#ansible-playbook -i ~/ansible_devops_create_vm_azure/hosts ~/ansible_devops_create_vm_azure/create_vm.yml
+ansible-playbook -i /tmp/laba5/hosts /tmp/laba5/create_vm.yml
 
 echo "###########################################################"
 echo

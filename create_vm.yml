@@ -20,7 +20,7 @@
 #    - local_ip: "172.16.0.10"
     - virtualnetwork_cidr: "172.16.0.0/16"
     - subnet_cidr: "172.16.1.0/24"
-    - admin_pub_path: "~/.ssh/id_rsa.pub"
+    - admin_pub_path: "~/.ssh/jenkins_to_ansible_azure.pub"
     - resourcegroup_name: "{{project_prefix}}-rg"
     - availabilityset_name: "{{project_prefix}}-avset"
     - virtualnetwork_name: "{{project_prefix}}-vnet"
