@@ -1,15 +1,11 @@
 #!/bin/bash
 
-URL=`cat /home/alex/secret/url`
-PASS=`cat /home/alex/secret/pass`
-TENANT=`cat /home/alex/secret/tenant`
-
 echo "-------------START-------------"
 echo "###########################################################"
 echo "generate NEW SSH key"
 echo "###########################################################"
 
-ssh-keygen -t rsa -N "" -f ~/.ssh/laba5_jenkins_to_ansible_to_azure
+ssh-keygen -t rsa -N "" -f /home/alex/.ssh/laba5_jenkins_to_ansible_to_azure
 
 echo "###########################################################"
 echo "Install Azure CLI"
