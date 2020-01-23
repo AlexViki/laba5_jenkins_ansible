@@ -1,8 +1,8 @@
 #!/bin/bash
 
-URL=`cat ~/secret/url`
-PASS=`cat ~/secret/pass`
-TENANT=`cat ~/secret/tenant`
+URL=`cat /home/alex/secret/url`
+PASS=`cat /home/alex/secret/pass`
+TENANT=`cat /home/alex/secret/tenant`
 
 echo "-------------START-------------"
 echo "###########################################################"
