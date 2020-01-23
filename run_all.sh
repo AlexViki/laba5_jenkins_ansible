@@ -48,7 +48,7 @@ echo "###########################################################"
 echo "RUN playbook "
 echo "###########################################################"
 
-ansible-playbook -i ~/ansible_devops_create_vm_azure/hosts ~/ansible_devops_create_vm_azure/create_vm.yml
+#ansible-playbook -i ~/ansible_devops_create_vm_azure/hosts ~/ansible_devops_create_vm_azure/create_vm.yml
 
 echo "###########################################################"
 echo
