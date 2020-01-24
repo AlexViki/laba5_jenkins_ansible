@@ -5,7 +5,11 @@ echo "###########################################################"
 echo "generate NEW SSH key"
 echo "###########################################################"
 
-ssh-keygen -t rsa -N "" -f /home/alex/.ssh/laba5_jenkins_to_ansible_to_azure
+sudo rm -rf /laba5/git_files
+sudo mkdir -p /laba5/.ssh
+sudo ssh-keygen -t rsa -N "" -f /laba5/.ssh/laba5_jenkins_to_ansible_to_azure <<< y
+sudo chmod 600 /laba5/.ssh/*
+sudo chown jenkins:jenkins /laba5/.ssh/*
 
 echo "###########################################################"
 echo "Install Azure CLI"
@@ -38,13 +42,13 @@ echo "###########################################################"
 echo "Clone playbook file from GIT"
 echo "###########################################################"
 
-git clone https://github.com/AlexViki/laba5_jenkins_ansible.git /tmp/laba5
+sudo git clone https://github.com/AlexViki/laba5_jenkins_ansible.git /laba5/git_files
 
 echo "###########################################################"
 echo "RUN playbook "
 echo "###########################################################"
 
-ansible-playbook -i /tmp/laba5/hosts /tmp/laba5/create_vm.yml
+ansible-playbook -i /laba5/git_files/hosts /laba5/git_files/create_vm.yml
 
 echo "###########################################################"
 echo
