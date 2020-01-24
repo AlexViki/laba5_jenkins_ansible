@@ -3,7 +3,7 @@
   connection: local
   hosts: all
   vars_files:
-    - ./vars.yml
+    - /laba5/git_files/vars.yml
     
 #  vars_prompt:
 #    - name: "project_prefix"
@@ -36,8 +36,6 @@
     
   tasks:
     - name: "----->Create Resource Group"
-      include_vars:
-        file: ./vars.yml
       azure_rm_resourcegroup:
         name: "{{resourcegroup_name}}"
         location: "{{location}}"
