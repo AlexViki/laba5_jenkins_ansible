@@ -13,27 +13,29 @@
 #      private: no
 #      default: "user"
 
-  vars:
-    - admin_username: alex
-    - project_prefix: laba-5
-    - location: "westeurope"
-    - vm_size: "Standard_B1s"
-    - disk_type: "Standard_LRS"
+#  vars:
+#    - admin_username: alex
+#    - project_prefix: laba-5
+#    - location: "westeurope"
+#    - vm_size: "Standard_B1s"
+#    - disk_type: "Standard_LRS"
 #    - local_ip: "172.16.0.10"
-    - virtualnetwork_cidr: "172.16.0.0/16"
-    - subnet_cidr: "172.16.1.0/24"
-    - admin_pub_path: "/laba5/.ssh/laba5_jenkins_to_ansible_to_azure.pub"
-    - resourcegroup_name: "{{project_prefix}}-rg"
-    - availabilityset_name: "{{project_prefix}}-avset"
-    - virtualnetwork_name: "{{project_prefix}}-vnet"
-    - subnet_name: "{{project_prefix}}-subnet"
-    - securitygroup_name: "{{project_prefix}}-nsg"
-    - vm_root_name: "{{project_prefix}}-vm"
-    - public_ip_name: "{{project_prefix}}-ip"
-    - nic_root_name: "{{project_prefix}}-nic"
+#    - virtualnetwork_cidr: "172.16.0.0/16"
+#    - subnet_cidr: "172.16.1.0/24"
+#    - admin_pub_path: "/laba5/.ssh/laba5_jenkins_to_ansible_to_azure.pub"
+#    - resourcegroup_name: "{{project_prefix}}-rg"
+#    - availabilityset_name: "{{project_prefix}}-avset"
+#    - virtualnetwork_name: "{{project_prefix}}-vnet"
+#    - subnet_name: "{{project_prefix}}-subnet"
+#    - securitygroup_name: "{{project_prefix}}-nsg"
+#    - vm_root_name: "{{project_prefix}}-vm"
+#    - public_ip_name: "{{project_prefix}}-ip"
+#    - nic_root_name: "{{project_prefix}}-nic"
     
   tasks:
     - name: "----->Create Resource Group"
+      include_vars:
+        file: ./vars.yml
       azure_rm_resourcegroup:
         name: "{{resourcegroup_name}}"
         location: "{{location}}"
