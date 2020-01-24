@@ -8,6 +8,8 @@
 ### EXPECTED RESULT:
 You have to have a pipeline that runs from a local machine and as a result you have to get a virtual machine with Jenkins through the base authorization in NGINX or Apache.
 
+--------------------------------------------------------------------------------------
+
 You need to copy text from "run_all.sh" and put it to Freestyle project in Jenkins  
 script will install all necessary package for running "Ansible" file
 use Azure service principal for authorization "az ad sp create-for-rbac --name AnsibleService" before running this script
