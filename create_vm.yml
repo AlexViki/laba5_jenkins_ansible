@@ -15,7 +15,7 @@
 
   vars:
     - admin_username: alex
-    - project_prefix: laba-5
+    - project_prefix: laba-6
     - location: "westeurope"
     - vm_size: "Standard_B1s"
     - disk_type: "Standard_LRS"
