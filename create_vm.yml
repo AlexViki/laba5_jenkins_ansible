@@ -2,7 +2,9 @@
 - name: "Create Azure resources"
   connection: local
   hosts: all
-  
+  vars_files:
+    - ./vars.yml
+    
 #  vars_prompt:
 #    - name: "project_prefix"
 #      prompt: "Type the name of resources"
